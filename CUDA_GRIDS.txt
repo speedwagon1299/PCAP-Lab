@@ -1,0 +1,22 @@
+1D Grid
+
+1D Block
+return blockIdx.x * blockDim.x + threadIdx.x;
+
+2D Block
+return blockIdx.x * blockDim.x * blockDim.y + blockDim.x * threadIdx.y + threadIdx.x;
+
+3D Block
+return blockIdx.x * blockDim.x * blockDim.y * blockDim.z + blockDim.x * blockDim.y * threadIdx.z + blockDim.x * threadIdx.y + threadIdx.x
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+2D Grid
+
+blockIdx = gridDim.x * blockIdx.y + blockIdx.x
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+3D Grid
+
+blockIdx = gridDim.x * gridDim.y * blockIdx.z + gridDim.x * blockIdx.y + blockIdx.x
