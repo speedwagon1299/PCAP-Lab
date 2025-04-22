@@ -117,11 +117,11 @@ int main() {
 
     cudaMemcpy(res, d_res, img_size, cudaMemcpyDeviceToHost);
 
-    FILE* out = fopen("Mona_Lisa_out.pgm", "wb");
+    FILE* out = fopen("Mona_Lisa_sobel_cu.pgm", "wb");
     fprintf(out, "P5\n%d %d\n255\n", width, height);
     fwrite(res, sizeof(unsigned char), img_size, out);
     fclose(out);
-    printf("Saved filtered image as Mona_Lisa_out.pgm\n");
+    printf("Saved filtered image as Mona_Lisa_sobel_cu.pgm\n");
 
     cudaFree(d_img);
     cudaFree(d_mask);
