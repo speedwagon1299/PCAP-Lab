@@ -48,12 +48,12 @@ int main() {
     p = (float*) malloc(n_size);
     printf("\nN:\n");
     for(int i = 0; i < w; i++) {
-        n[i] = (rand() % (MAXI - MINI) + MINI);
+        n[i] = rrand(MINI, MAXI);
         printf("%.2f ", n[i]);
     }
     printf("\nM:\n");
     for(int i = 0; i < KERNEL_WIDTH; i++) {
-        m[i] = (rand() % (MAXI - MINI) + MINI);
+        m[i] = rrand(MINI, MAXI);
         printf("%.2f ", m[i]);
     }
     cudaMalloc((void**)&dn, n_size);
