@@ -18,8 +18,8 @@ __global__ void find(char* sent, int* ind, int len) {
             break;
         }
     }
-    if(sent[i] == '\0' && key[i] == '\0' && flag) {
-        *ind = idx;
+    if(sent[i + idx*30] == '\0' && key[i] == '\0' && flag) {
+        atomicMin(ind, idx);
     }
 }
 
@@ -34,7 +34,7 @@ int main() {
     printf("\nEnter the word to search:\n");
     scanf("%s", search);
     int s_size = len * 30 * sizeof(char);
-    int ind = -1;
+    int ind = INT_MAX;
     int* dind; char *dsent;
     cudaMalloc((void**)&dsent, s_size);
     cudaMalloc((void**)&dind, sizeof(int));
