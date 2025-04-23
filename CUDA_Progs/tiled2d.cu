@@ -84,7 +84,7 @@ int main() {
     cudaMemcpy(db, b, b_size, cudaMemcpyHostToDevice);
 
     dim3 dimBlock(TILE_WIDTH, TILE_WIDTH);
-    // columsn first, rows second in general
+    // columns first, rows second in general
     dim3 dimGrid((bc+TILE_WIDTH-1)/TILE_WIDTH, (ar+TILE_WIDTH-1)/TILE_WIDTH);
     tileMat<<<dimGrid, dimBlock>>> (da, db, dc, ar, ac, bc);
     cudaMemcpy(c, dc, c_size, cudaMemcpyDeviceToHost);
